@@ -33,7 +33,7 @@ const poblacionTotal = () => {
 
 // 5
 const poblacionTotalMundialSinSud = (poblMundial) => {
-    /* Debe retornar la población total mundial (llega por parámetro) sin reutilizar la función 'poblacionTotal', más bien restando sucesivamente la población de cada país a la población mundial, usando 'reduce' */
+    /* Debe retornar la población total mundial (llega por parámetro) sin reutilizar la función 'poblacionTotal', más bien restando sucesivamente la población de cada país a la población mundial */
     return "Ejercicio 5) pendiente";
 }
 
