@@ -10,31 +10,62 @@ const cantPaises = () => data.length;
 // 1
 const imprimirPaises = () => {
     /* Debe imprimir la info de todos los países (solo su nombre común y su capital) */
-    console.log("Ejercicio 1) pendiente")
+    data.map(
+        (objPais) => {
+            console.log ( 
+                { 
+                    nombre: objPais.name.common, 
+                    capital: objPais.capital
+                }  
+            )
+        }
+    );
 }
 
 // 2
 const nombresDePaises = () => {
     /* Debe retornar un array con los nombres oficiales de cada país */
-    return "Ejercicio 2) pendiente";
+    return data.reduce((nombresVec, objPais) =>
+        {
+            nombresVec.push(objPais.name.official);
+            return nombresVec;
+        }, []
+    );
 }
 
 // 3
 const nombresDeCapitales = () => {
     /* Debe retornar un array con los nombres de las capitales de cada país */
-    return "Ejercicio 3) pendiente";
+    return data.reduce((vecNomsCapitales, objPais) =>
+        {
+            vecNomsCapitales.push(objPais.capital);
+            return vecNomsCapitales;
+        }, []
+    );
 }
 
 // 4
 const poblacionTotal = () => {
     /* Debe retornar la población total de Sudamérica */
-    return "Ejercicio 4) pendiente";
+    return data.reduce((acuPoblacion, objPais) =>
+        {
+            acuPoblacion += objPais.population;
+            return acuPoblacion;
+        }, 0
+    );
 }
 
 // 5
 const poblacionTotalMundialSinSud = (poblMundial) => {
     /* Debe retornar la población total mundial (llega por parámetro) sin reutilizar la función 'poblacionTotal', más bien restando sucesivamente la población de cada país a la población mundial */
-    return "Ejercicio 5) pendiente";
+    return data.filter((objPais) => 
+            (!objPais.continents.includes("South America"))
+        ).reduce((acuPoblacion, objPais) =>
+            {
+                acuPoblacion += objPais.population;
+                return acuPoblacion;
+            }, 0
+    );
 }
 
 // 6
