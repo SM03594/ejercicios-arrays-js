@@ -71,37 +71,26 @@ const poblacionTotalMundialSinSud = (poblMundial) => {
 // 6
 const todosEmpiezanLosLunes = () => {
     /* Debe retornar si todos los países inician la semana los días lunes (monday) */
-    return data.reduce((boolTodos ,objPais) => 
-        {
-            const empiezaLunes = objPais.startOfWeek == "monday";
-            boolTodos = boolTodos && empiezaLunes;
-            return boolTodos;
-        }, true
-    );
+    return data.every((objPais) => (objPais.startOfWeek.toLowerCase == "monday"))
 }
 
 // 7
 const algunoNoConducePorLaDerecha = () => {
     /* Debe retornar si en alguno de los países no se conduce por la derecha (right) */
-    return data.reduce((boolTodos ,objPais) => 
-        {
-            const conduceXDerecha = objPais.car.side == "right";
-            boolTodos = boolTodos && conduceXDerecha;
-            return boolTodos;
-        }, true
-    );
+    return data.some((objPais) => (objPais.car.side.toLowerCase != "right"));
+    
 }
 
 // 8
 const cualesNoConducenPorLaDerecha = () => {
     /* Debe retornar a los países donde no se conduce por la derecha (right) */
-    return data.filter((objPais) => (objPais.car.side != "right"));
+    return data.filter((objPais) => (objPais.car.side.toLowerCase != "right"));
 }
 
 // 9
 const cualesNoConducenPorLaDerechaSimpl = () => {
     /* Debe retornar solo los nombres comunes de los países donde no se conduce por la derecha (right) */
-        return data.filter((objPais) => (objPais.car.side != "right")
+        return data.filter((objPais) => (objPais.car.side.toLowerCase != "right")
         ).map((objPais) => objPais.name.common)
 
 }
