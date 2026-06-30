@@ -71,30 +71,45 @@ const poblacionTotalMundialSinSud = (poblMundial) => {
 // 6
 const todosEmpiezanLosLunes = () => {
     /* Debe retornar si todos los países inician la semana los días lunes (monday) */
-    return "Ejercicio 6) pendiente";
+    return data.reduce((boolTodos ,objPais) => 
+        {
+            const empiezaLunes = objPais.startOfWeek == "monday";
+            boolTodos = boolTodos && empiezaLunes;
+            return boolTodos;
+        }, true
+    );
 }
 
 // 7
 const algunoNoConducePorLaDerecha = () => {
     /* Debe retornar si en alguno de los países no se conduce por la derecha (right) */
-    return "Ejercicio 7) pendiente";
+    return data.reduce((boolTodos ,objPais) => 
+        {
+            const conduceXDerecha = objPais.car.side == "right";
+            boolTodos = boolTodos && conduceXDerecha;
+            return boolTodos;
+        }, true
+    );
 }
 
 // 8
 const cualesNoConducenPorLaDerecha = () => {
     /* Debe retornar a los países donde no se conduce por la derecha (right) */
-    return "Ejercicio 8) pendiente";
+    return data.filter((objPais) => (objPais.car.side != "right"));
 }
 
 // 9
 const cualesNoConducenPorLaDerechaSimpl = () => {
     /* Debe retornar solo los nombres comunes de los países donde no se conduce por la derecha (right) */
-    return "Ejercicio 9) pendiente";
+        return data.filter((objPais) => (objPais.car.side != "right")
+        ).map((objPais) => objPais.name.common)
+
 }
 
 // 10
 const paisesQueLimitanConArgentina = () => {
     /* Debe retornar solo los nombres comunes de los países que limitan con Argentina */
     /* WARNING: Hay países que no tienen esa info. A tenerlo en cuenta para evitar errores */
-    return "Ejercicio 10) pendiente";
+    return data.filter((objPais) => (objPais.borders?.includes("ARG"))
+        ).map((objPais) => objPais.name.common);
 }
